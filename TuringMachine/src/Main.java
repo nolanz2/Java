@@ -1,4 +1,3 @@
-package project1;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
