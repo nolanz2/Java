@@ -1,0 +1,55 @@
+
+**/Using nested for loops, compare every point to every other point, then sort the list
+
+bruteForceClosestPair of P(N)
+if N < 2 then
+  return ∞
+else
+  minDistance -> |P(1) - P(2)|
+  minPoints -> { P(1), P(2) }
+  for each i in [1, N-1]
+    for each in [i+1, N]
+      if |P(i) - P(j)| < minDistance 
+        minDistance -> |P(i) - P(j)|
+        minPoints -> { P(i), P(j) } 
+      end if
+    end for
+  end for
+  return minDistance, minPoints
+ end if
+ 
+ 
+ 
+ **/Divide in half, sorting by x and y coordinates, 
+ 
+divideandconquer of (xP, yP)
+                     xP is P(N) sorted by x 
+                     yP is P(N) sorted by y 
+if N ≤ 3 then
+  return closest points using bruteForceClosestPair
+else
+  xL -> points of xP from 1 to N/2
+  xR -> points of xP from (N/2 + 1) to N
+  xm -> xP(N/2)
+  yL ->  p of yP where px ≤ xm
+  yR -> p of yP where px ≤ xm
+  (dL, pairL) -> closestPair of (xL, yL)
+  (dR, pairR) -> closestPair of (xR, yR)
+  (dmin, pairMin) -> (dR, pairR)
+  if dL < dR then
+    (dmin, pairMin) -> (dL, pairL)
+  end if
+  yS -> { p of yP where |xm - px| < dmin }
+  nS -> number of points in yS
+  (closest, closestPair) -> (dmin, pairMin)
+  for i (from 1 to nS - 1)
+    j -> i + 1
+    while j ≤ nS and yS(j)y - yS(i)y < dmin
+      if |yS(j) - yS(i)| < closest
+        (closest, closestPair) -> (|yS(j) - yS(i)|, {yS(j), yS(i)})
+      end if
+      j -> j + 1
+    end while
+  end for
+  return closest, closestPair
+end if

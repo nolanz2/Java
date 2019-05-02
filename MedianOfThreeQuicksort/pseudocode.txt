@@ -1,0 +1,39 @@
+
+medianOfThree(a[i],a[j],a[k]){
+//assumes k = (i+j)/2
+/* sort a[i],a[j],a[k] */
+	if(a[k]<a[i])
+		swap(a[i],a[k]);
+	end if
+
+	if(a[j]<a[i])
+		swap(a[i],a[j]);
+	end if
+
+	if(a[j]<a[k])
+		swap(a[j],a[k]);
+	end if
+
+/* Swap pivot to last position and return it */
+
+	swap(a[k],a[j]);
+	return a[j];
+}
+
+
+/*
+The run time would be O(1). This is due to the run-time of each comparison being O(1), as well as the run time of the return being O(1). Since these are both constant time, the run time of median of three is simply O(1).
+
+
+In the case of an already sorted array, the runtime will then better than in the case of a non-median partition.
+For normal quicksort, the runtime of a sorted array is its worst-case time complexity of O(n^2).
+The runtime of normal quicksort is greatly increased if the pivot is chosen as the first or last element.
+With median of 3 however, each iteration will always produce two arrays of equal length that are then called recursively.
+This is because it takes divide-and conquer approach, with a reccurence of:
+T(n) <= T(n/2) + T(n/2) + O(n)
+T(n) <= 2T(n/2) + O(n)
+This reccurence can simply be reduce to O(n*logn).
+This is due to the array being divided into two arrays of equal length during each iteration (O(logn)).
+Then each array is recursively called and again divided into two subarrays of equal length, giving a runtim of O(n*logn).
+*/
+
