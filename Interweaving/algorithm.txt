@@ -1,0 +1,37 @@
+algorithm boolean interleaving(string s, string x, string y){
+if s.isEmpty:
+	return true	
+end if 
+
+if s[0] = x[0]:
+	if interleaving(s[1:], x[1:] + x[0], y):
+		return true;
+end if
+
+if s[0] = y[0]:
+	if interleaving(s[1:], x, y[1:] + y[0]):
+		return true;
+end if
+
+return false;
+
+}
+
+Runtime of algorithm is O(2^n) where n is the length of string s (the longest string between x, y, and s). 
+
+Breakdown:
+
+Time T(N) is the time it takes for string s of length N.
+
+first if statement: T(N) = O(1)
+second and third if: T(N) = T(N-1)
+so:
+T(N) = O(1) + 2*T(N-1) when s[0]=x[0]=y[0]
+
+expansion:
+
+T(N) = 3*O(1) + 4*T(N-2)
+..
+T(N) = (2^(N-1)-1)*O(1) +  (2^(N-1))*T(1)
+T(N) = (2^N - 1) * O(1)
+T(N) = O(2^N)

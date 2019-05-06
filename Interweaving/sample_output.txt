@@ -1,0 +1,41 @@
+input:
+X: 101
+Y: 00
+S: 100010101
+
+output:
+100010101 is interleaved of 101 and 00
+Comparisons made: 9
+
+/*~~~~~~~~~~~*/
+
+input:
+X: 101
+Y: 000
+S: 101101A
+
+output:
+101101A is not interleaved of 101 and 000
+Comparisons made: 8
+
+/*~~~~~~~~~~*/
+
+input:
+X: 1010
+Y: 0001
+S: 1010101011
+
+output:
+1010101011 is not interleaved of 1010 and 0001
+Comparisons made: 13
+
+/*~~~~~~~~~~*/
+
+input:
+X: 111
+Y: 000
+S: 1111111111
+
+output:
+1111111111 is interleaved of 111 and 000
+Comparisons made: 10
